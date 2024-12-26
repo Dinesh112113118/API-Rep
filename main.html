@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block head %}
+   <title>Hello</title>
+{% endblock %}
+
+{% block body %}
+        <p>This is an basic arrangement of a To-Do list</p>
+        <div class="container">
+            <h2>Tasks</h2>
+            {% if tasks | length < 1%}
+            <h3>No tasks Have been updated</h3>
+            {% else %}
+            <table>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Action</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{task.content}}</td>
+                <td>{{task.created.strftime("%Y-%m-%d")}}</td>
+
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br/>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>  
+            {% endfor %}
+            </table> 
+            {% endif %}
+            
+            <form action="/" method="POST">
+                <input type="text" name="content"
+                id ='content' placeholder="Enter a task"/>
+                <input type="submit" value="add task"
+                id="btn_add"/>
+            </form>
+            </div>
+
+{% endblock %}
