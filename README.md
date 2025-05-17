@@ -1,2 +1,2 @@
-# API-Rep
-For developing an API for multiple option.
+# CRUD APP
+For developing an CRUD APP for multiple option.
